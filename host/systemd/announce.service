@@ -1,0 +1,10 @@
+# /etc/systemd/system/announce.service
+[Unit]
+Description=Announce this host to the pocket-dns server
+Wants=announce.timer
+
+[Service]
+ExecStart=/usr/local/bin/announce http://announcements:6380
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+# /etc/systemd/system/announce.timer
+[Unit]
+Description=Run pocket-dns announcement service every 30 minutes
+
+[Timer]
+Unit=announce.service
+OnUnitInactiveSec=30m
+AccuracySec=1s
+
+[Install]
+WantedBy=timers.target

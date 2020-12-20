@@ -34,3 +34,9 @@ services:
   # Back-end
   redis:
     image: *redis
+    volumes:
+      - vol0:/var/lib/redis
+
+# Volumes allow data persistence across service restarts
+volumes:
+  vol0: {}

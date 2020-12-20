@@ -1,10 +1,6 @@
 #!/bin/bash
 # `announce` can be used by a host that wants to become reachable via name lookup. The hosts determines its own IP address
 # on the network and then updates the registry with an HTTP request to the web endpoint of the pocket-dns redis back-end.
-
-REGISTRY="http://pocket-dns:6380"
-ADDR_PREFIX="192.168.178"  # TODO: this is kinda rough
-
 function die() {
   echo "error: $1"
   exit 1
@@ -21,8 +17,14 @@ function check_deps() {
 check_deps hostname ip grep awk sed curl jq
 
 ## main
+REGISTRY="$1"
+[[ -n "$REGISTRY" ]] || die "registry endpoint not specified!"
+
+ADDR_PREFIX="192.168.178"  # TODO: this is kinda rough
+
 HOST=$(hostname)
 ADDR=$(ip a | grep inet | grep "${ADDR_PREFIX}" | awk '{ print $2 }' | sed -E 's/\/\S+//')
+SECONDS="1800"  # 30 minutes
 
-[[ $(curl --silent "${REGISTRY}/set/${HOST}/${ADDR}" | jq -r '.set[1]') != "OK" ]] && die "could not update the registry"
-echo "success: new IP for ${HOST} is ${ADDR}"
+[[ $(curl -s "${REGISTRY}/setex/${HOST}/${SECONDS}/${ADDR}" | jq -r '.setex[1]') != "OK" ]] && die "could not update the registry"
+echo "success: new IP for ${HOST} is ${ADDR}, expires in ${SECONDS} seconds."
