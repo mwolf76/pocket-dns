@@ -6,12 +6,12 @@ A lightweight portable DNS server, designed with SOHO applications in mind.
 
 This project originated from a personal use-case. I wanted to be able to efficiently manage an arbitrary number of
 DHCP-configured hosts in my internal network, _while having no access to the DHCP server_ (which is some closed box,
-managed by my ISP). The idea came to me out of the dissatisfaction of having to maintain large `/etc/hosts` file on
-multiple hosts.
+managed by my ISP). The idea came to me out of the dissatisfaction of having to maintain large and
+ever-changing `/etc/hosts` files on multiple hosts.
 
-Portable DNS is a simple DNS server that uses a NoSQL keystore as its back-end. hosts can announce themselves by sending
-an HTTP request with its hostname and IP. This information will immediately become available to all the other hosts. The
-DNS server only replies with authoritative answers within the local search domain (by default: localdomain). The
+Portable DNS is a simple DNS server that uses a NoSQL keystore as its back-end. Hosts can announce themselves by sending
+an HTTP request with their hostname and IP. This information will immediately become visible to all the other hosts. The
+DNS server only replies with authoritative answers within the local search domain (by default: `localdomain`). The
 intended usage is then to have it as a primary DNS server, while keeping one more general DNS server as secondary.
 
 For example, here is my `/etc/resolv.conf` (same for all the hosts in `localdomain`).
@@ -22,11 +22,11 @@ nameserver 192.168.178.26
 nameserver 192.168.178.1
 ```
 
-In the example above, the first entry is for portable DNS, while the second nameserver is the ISP's.
+In the example above, the first entry is for the Pocket DNS, while the second nameserver is the ISP's.
 
 ## Server installation
 
-Not there yet. For the time being, the serve can be started with `docker-compose`.
+Not there yet. For the time being, the server can be started directly from the sources with `docker-compose`.
 
 ```bash
 $ docker-compose up --build -d
@@ -40,11 +40,12 @@ Creating pocket-dns_app_1    ... done
 ## Announcing
 
 In order to let itself known on the network, any participating host announces itself by sending a message to
-the http://announcements:6380 end-point. From that moment on, the other hosts within the `localdomain` will be able to
-resolve its name. No more fiddling with `/etc/hosts` required. All the entries in the database, except the one for the
-announcements' registry itself, expire automatically in 30 minutes. A systemd service and timer in the hosts take care
-of refreshing the entry for that particular host before the corresponding entry in the registry expires. This allows
-hosts to join and leave the network arbitrarily, with no concern of leaving behind stale DNS entries.
+the http://announcements:6380 end-point. From that moment on, the other hosts using Pocket DNS will be able to resolve
+its name. No more fiddling with `/etc/hosts` is or will ever again be required. All the entries in the database, except
+the one for the announcements' registry itself, expire automatically in 30 minutes. A systemd service and timer in the
+hosts take care of refreshing the entry for that particular host name before the corresponding entry in the registry
+expires. This allows hosts to join and leave the network arbitrarily, with no concern of leaving behind stale DNS
+entries.
 
 ```bash
 $ sudo make -C host/ install
