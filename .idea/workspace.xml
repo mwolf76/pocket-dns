@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="18eb53da-4b11-4c67-9cd5-6541cdd4ff0b" name="Default Changelist" comment="Reworked the webdis container and wrote some docs.">
-      <change afterPath="$PROJECT_DIR$/host/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/host/systemd/announce.service" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/host/systemd/announce.timer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/announce" beforeDir="false" afterPath="$PROJECT_DIR$/host/scripts/announce" afterDir="false" />
+    <list default="true" id="18eb53da-4b11-4c67-9cd5-6541cdd4ff0b" name="Default Changelist" comment="- Drafted some tooling for the hosts (announce script, systemd service and timer)&#10;- Introduced data persistence via volumes&#10;- The announce script now uses SETEX instead of SET.">
+      <change beforePath="$PROJECT_DIR$/host/systemd/announce.timer" beforeDir="false" afterPath="$PROJECT_DIR$/host/systemd/announce.timer" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608468378247</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="- Drafted some tooling for the hosts (announce script, systemd service and timer)&#10;- Introduced data persistence via volumes&#10;- The announce script now uses SETEX instead of SET.">
+      <created>1608481533272</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1608481533272</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,7 +135,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Using webdis as an HTTP endpoint to the backend. Now redis can be fully isolated. docker-compose build." />
     <MESSAGE value="Reworked the webdis container and wrote some docs." />
-    <option name="LAST_COMMIT_MESSAGE" value="Reworked the webdis container and wrote some docs." />
+    <MESSAGE value="- Drafted some tooling for the hosts (announce script, systemd service and timer)&#10;- Introduced data persistence via volumes&#10;- The announce script now uses SETEX instead of SET." />
+    <option name="LAST_COMMIT_MESSAGE" value="- Drafted some tooling for the hosts (announce script, systemd service and timer)&#10;- Introduced data persistence via volumes&#10;- The announce script now uses SETEX instead of SET." />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
