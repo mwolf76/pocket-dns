@@ -1,10 +1,9 @@
 #!/bin/bash
 
-# registry end-point
-REGISTRY="http://pocket-dns/registry/"
-
+REGISTRY="http://localhost:6380"
 HOST=$(hostname)
 ADDR=$(ip a | grep inet | grep 192.168.178 | awk '{ print $2 }' | sed -E 's/\/\S+//')
 
-curl --quiet --header "Content-Type: application/json" --request POST \
-     --data "{\"host\":\"$HOST\", \"addr\":\"$ADDR\"}" "$REGISTRY"
+[[ $(curl --silent "${REGISTRY}/set/${HOST}/${ADDR}" | jq -r '.set[1]') != "OK" ]] && exit 1
+
+echo "new IP for ${HOST} is ${ADDR}"

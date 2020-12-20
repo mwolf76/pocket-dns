@@ -1,15 +1,27 @@
 ---
-version: "3"
+version: "3.6"
 
 services:
+  # DNS endpoint
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: pocketdns.Dockerfile
     depends_on:
       - redis
     ports:
       - "53:53/udp"
 
+  # HTTP REST endpoint
+  webdis:
+    build:
+      context: .
+      dockerfile: webdis.Dockerfile
+    depends_on:
+      - redis
+    ports:
+      - "6380:6380/tcp"
+
+  # Back-end
   redis:
     image: "redis:5.0.10-buster"
-    ports:
-      - "6379:6379/tcp"
