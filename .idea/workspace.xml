@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="18eb53da-4b11-4c67-9cd5-6541cdd4ff0b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webdis-entrypoint.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webdis.Dockerfile" afterDir="false" />
+    <list default="true" id="18eb53da-4b11-4c67-9cd5-6541cdd4ff0b" name="Default Changelist" comment="Using webdis as an HTTP endpoint to the backend. Now redis can be fully isolated. docker-compose build.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/pocketdns.Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/update-ip.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/update-ip.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/update-ip.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/announce" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webdis-entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/webdis.entrypoint.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webdis.Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/webdis.Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,27 +60,13 @@
       <recent name="$PROJECT_DIR$/docker/pocketdns" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.webdis/Dockerfile">
+  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
     <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="pocket-dns" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="FILE" />
       <filePath value="$PROJECT_DIR$/main.go" />
       <directory value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
-      <deployment type="dockerfile">
-        <settings>
-          <option name="imageTag" value="pocket-dns" />
-          <option name="buildCliOptions" value="" />
-          <option name="command" value="" />
-          <option name="containerName" value="" />
-          <option name="entrypoint" value="" />
-          <option name="commandLineOptions" value="" />
-          <option name="sourceFilePath" value="pocketdns.Dockerfile" />
-        </settings>
-      </deployment>
       <method v="2" />
     </configuration>
     <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
@@ -92,40 +77,13 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="docker-compose.yml.redis: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="redis" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="webdis/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
-      <deployment type="dockerfile">
-        <settings>
-          <option name="sourceFilePath" value="webdis.Dockerfile" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <list>
-      <item itemvalue="Docker.Dockerfile" />
-      <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
-      <item itemvalue="Docker.docker-compose.yml.redis: Compose Deployment" />
-      <item itemvalue="Docker.webdis/Dockerfile" />
       <item itemvalue="Go Build.go build main.go" />
+      <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
-        <item itemvalue="Docker.Dockerfile" />
-        <item itemvalue="Docker.webdis/Dockerfile" />
-        <item itemvalue="Docker.docker-compose.yml.redis: Compose Deployment" />
         <item itemvalue="Go Build.go build main.go" />
       </list>
     </recent_temporary>
@@ -139,6 +97,14 @@
       <option name="presentableId" value="Default" />
       <updated>1608411216656</updated>
     </task>
+    <task id="LOCAL-00001" summary="Using webdis as an HTTP endpoint to the backend. Now redis can be fully isolated. docker-compose build.">
+      <created>1608458529658</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1608458529658</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,6 +121,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Using webdis as an HTTP endpoint to the backend. Now redis can be fully isolated. docker-compose build." />
+    <option name="LAST_COMMIT_MESSAGE" value="Using webdis as an HTTP endpoint to the backend. Now redis can be fully isolated. docker-compose build." />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

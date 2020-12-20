@@ -1,6 +1,15 @@
 ---
 version: "3.6"
 
+# custom configuration
+x-common:
+  images:
+    redis: &redis "redis:5.0.10-buster"
+
+  ports:
+    dns: &dns "53:53/udp"
+    web: &web "6380:6380/tcp"
+
 services:
   # DNS endpoint
   app:
@@ -10,7 +19,7 @@ services:
     depends_on:
       - redis
     ports:
-      - "53:53/udp"
+      - *dns
 
   # HTTP REST endpoint
   webdis:
@@ -20,8 +29,8 @@ services:
     depends_on:
       - redis
     ports:
-      - "6380:6380/tcp"
+      - *web
 
   # Back-end
   redis:
-    image: "redis:5.0.10-buster"
+    image: *redis
