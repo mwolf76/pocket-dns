@@ -14,7 +14,7 @@ services:
   # DNS endpoint
   app:
     build:
-      context: .
+      context: ""
       dockerfile: pocketdns.Dockerfile
     depends_on:
       - redis
@@ -24,7 +24,7 @@ services:
   # HTTP REST endpoint
   webdis:
     build:
-      context: .
+      context: ""
       dockerfile: webdis.Dockerfile
     depends_on:
       - redis
