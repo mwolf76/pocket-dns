@@ -1,0 +1,15 @@
+---
+version: "3"
+
+services:
+  app:
+    build: .
+    depends_on:
+      - redis
+    ports:
+      - "53:53/udp"
+
+  redis:
+    image: "redis:5.0.10-buster"
+    ports:
+      - "6379:6379/tcp"
